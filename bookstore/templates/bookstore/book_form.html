@@ -1,0 +1,16 @@
+{% extends "bookstore/base.html" %}
+{% block title %}{{ form.instance.pk|yesno:"Edit Book,Add Book" }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3 class="mb-3">{{ form.instance.pk|yesno:"Edit Book,Add New Book" }}</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="{% url 'book-list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "bookstore/base.html" %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3 class="card-title">{{ object.title }}</h3>
+        <h5 class="card-subtitle mb-2 text-muted">by {{ object.author }}</h5>
+        <p class="card-text"><strong>Published Date:</strong> {{ object.published_date }}</p>
+
+        <a href="{% url 'book-update' object.pk %}" class="btn btn-warning btn-sm">Edit</a>
+        <a href="{% url 'book-delete' object.pk %}" class="btn btn-danger btn-sm">Delete</a>
+        <a href="{% url 'book-list' %}" class="btn btn-secondary btn-sm">Back</a>
+    </div>
+</div>
+{% endblock %}
